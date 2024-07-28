@@ -25,7 +25,9 @@ if command -v sudo >/dev/null; then
 elif command -v doas >/dev/null; then
   echo "Running with doas"
   doas env "$@" "$outfile"
-else
-  echo "You don't have sudo/doas, if you install a non flatpak version the installation may fail."
+elif command -v pkexec >/dev/null; then
+  echo "Installing on Vanilla OS 2 (only flatpak)"
   env "$@" "$outfile"
+else
+  echo "Neither sudo nor doas were found. Please install either of them to proceed."
 fi
