@@ -26,5 +26,6 @@ elif command -v doas >/dev/null; then
   echo "Running with doas"
   doas env "$@" "$outfile"
 else
-  echo "Neither sudo nor doas were found. Please install either of them to proceed."
+  echo "You don't have sudo/doas, if you install a non flatpak version the installation may fail."
+  env "$@" "$outfile"
 fi
