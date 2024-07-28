@@ -25,9 +25,9 @@ if command -v sudo >/dev/null; then
 elif command -v doas >/dev/null; then
   echo "Running with doas"
   doas env "$@" "$outfile"
-elif command -v host-shell >/dev/null; then
+elif command -v pkexec >/dev/null; then
   echo "Installing on Vanilla OS 2 (only flatpak)"
-  host-shell env "$@" "$outfile"
+  env "$@" "$outfile"
 else
   echo "Neither sudo nor doas were found. Please install either of them to proceed. Or run host-shel"
 fi
